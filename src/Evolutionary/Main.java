@@ -1,4 +1,4 @@
-package com;
+package Evolutionary;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,8 +14,8 @@ public class Main {
         Crossover crossover = new Crossover();
         Selection selection = new Selection();
 
-        File folder = new File("src/com/TSP");
-        File fileEntry = new File("src/com/TSP/gr666.tsp");
+        File folder = new File("src/Evolutionary/TSP");
+        File fileEntry = new File("src/Evolutionary/TSP/gr666.tsp");
 
 //        for (File fileEntry : Objects.requireNonNull(folder.listFiles())) {
 
