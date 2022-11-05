@@ -18,7 +18,7 @@ public class TSP implements Comparable<TSP> {
 
     Double score;
 
-    double fitness;
+    Double fitness;
 
     public double[][] createAdjacencyMatrix(){
         double[][] adjacencyMatrix = new double[nodes.size()][nodes.size()];
@@ -73,7 +73,51 @@ public class TSP implements Comparable<TSP> {
             }
         }
         sum += min;
+
         return sum;
+    }
+
+
+    public void greedyInitialize(int startNode, double[][] adjacencyMatrix){
+        ArrayList<Node> visitedPaths = new ArrayList<>();
+        int[] route = new int[nodes.size()];
+        double min = Integer.MAX_VALUE;
+        int i = 0, j = 0, counter = 0;
+
+        visitedPaths.add(this.nodes.get(startNode));
+        while (i < adjacencyMatrix.length
+                && j < adjacencyMatrix[i].length) {
+
+            if (counter >= adjacencyMatrix[i].length - 1) {
+                break;
+            }
+
+            if (j != i && !(visitedPaths.contains(this.nodes.get(j)))) {
+                if (adjacencyMatrix[i][j] < min) {
+                    min = adjacencyMatrix[i][j];
+                    route[counter] = j + 1;
+                }
+            }
+            j++;
+
+            if (j == adjacencyMatrix[i].length) {
+                min = Integer.MAX_VALUE;
+                visitedPaths.add(this.nodes.get(route[counter] - 1));
+                j = 0;
+                i = route[counter] - 1;
+                counter++;
+            }
+
+        }
+        //to return to first node
+        i = route[counter-1] - 1;
+
+        for (j = 0; j < adjacencyMatrix.length; j++) {
+            if ((i != j) && adjacencyMatrix[i][j] < min) {
+                min = adjacencyMatrix[i][j];
+                route[counter] = j + 1;
+            }
+        }
     }
 
     public double randomSearch(int numberOfRepetitions){
@@ -113,6 +157,10 @@ public class TSP implements Comparable<TSP> {
         }
         sum += adjacencyMatrix[list.get(0)][list.get(list.size()-1)];
         this.setScore(sum);
+    }
+
+    public void evaluateFitness(){
+        this.fitness = (1 / this.score) * 100000;
     }
 
     @Override

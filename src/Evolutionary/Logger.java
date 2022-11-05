@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Logger {
-    String file = "grPMX";
+    String file = "pop2.tsv";
     FileWriter fileWriter;
     PrintWriter printWriter;
 

@@ -38,12 +38,15 @@ public class Crossover {
         }
 
         counter = 0;
+        //tutaj moze byc problem
         if (cut2 - cut1 + 1 < parent2.size()) {
-            for (int i = 0; i < parent2.size(); i++) {
-                if (notInOrdered.length > counter
-                        && notInOrdered[counter].getId() == parent2.get(i).getId()) {
-                    arrParent2[counter] = parent2.get(i);
-                    counter++;
+            while(counter < notInOrdered.length) {
+                for (int i = 0; i < parent2.size(); i++) {
+                    if (notInOrdered.length > counter
+                            && notInOrdered[counter].getId() == parent2.get(i).getId()) {
+                        arrParent2[counter] = parent2.get(i);
+                        counter++;
+                    }
                 }
             }
         }
