@@ -1,0 +1,99 @@
+src/Evolutionary/TSP/fl417.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+240121.61502218488	248486.9027888458	242512.2071188096	 
+src/Evolutionary/TSP/nrw1379.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+1107259.7245617379	1114969.6089977557	1109151.5871747527	 
+src/Evolutionary/TSP/kroA150.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+101445.92559091479	115557.53161602945	105173.5260015754	 
+src/Evolutionary/TSP/gr666.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+37494.2644186562	38155.9022893378	37648.58539932596	 
+src/Evolutionary/TSP/berlin52.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+10643.14715432769	15603.933034370237	12016.83012789184	 
+src/Evolutionary/TSP/kroA100.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+56088.52154471268	69076.25512946068	60180.50324793337	 
+src/Evolutionary/TSP/ali535.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+23219.892950804115	23718.983983400514	23367.36261609305	 
+src/Evolutionary/TSP/pr2392.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+1.3106300178594438E7	1.3155425844313316E7	1.3130751865966124E7	 
+src/Evolutionary/TSP/kroA200.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average
+142137.2730039776	153693.40176302858	144616.7575036535	 
+src/Evolutionary/TSP/berlin11_modified.tsp
+Mutation swap, OX
+Tournament
+pop_size 100
+gen 1000
+px 0.7
+pm 0.7
+tour_size 5
+best	 worst	 average

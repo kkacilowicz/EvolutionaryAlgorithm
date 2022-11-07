@@ -19,8 +19,8 @@ public class Main {
 
 //        for (File fileEntry : Objects.requireNonNull(folder.listFiles())) {
 
-        int pop_size = 666;
-        int gen = 2000;
+        int pop_size = 100;
+        int gen = 1000;
         int i = 0;
         int tournament_size = 5;
         double px = 0.7;
@@ -28,6 +28,7 @@ public class Main {
 
         logger.printWriter.println(fileEntry);
         logger.printWriter.println("Mutation swap, OX");
+        logger.printWriter.println("Tournament");
         logger.printWriter.println("pop_size " + pop_size);
         logger.printWriter.println("gen " + gen);
         logger.printWriter.println("px " + px);
@@ -39,51 +40,50 @@ public class Main {
         tsp.setNodes(nodes);
         double[][] adjacencyMatrix = tsp.createAdjacencyMatrix();
 
-//        for (int k = 0; k < 10; k++) {
+//            for (int k = 0; k < 10; k++) {
 
-            Population[] populations = new Population[gen];
+        Population[] populations = new Population[gen];
 
-            for (int j = 0; j < gen; j++) {
-                Population pop = new Population();
-                pop.setIndividuals(new ArrayList<>());
-                populations[j] = pop;
-            }
+        for (int j = 0; j < gen; j++) {
+            Population pop = new Population();
+            pop.setIndividuals(new ArrayList<>());
+            populations[j] = pop;
+        }
 //
-//            populations[0].randomInitialize(tsp, pop_size);
-        populations[0].greedyInitialize(tsp, adjacencyMatrix);
-            populations[0].evaluate(adjacencyMatrix);
-            TSP theBestSolution = populations[0].getIndividuals().get(0);
+        populations[0].randomInitialize(tsp, pop_size);
+//        populations[0].greedyInitialize(tsp, adjacencyMatrix);
+        populations[0].evaluate(adjacencyMatrix);
+        TSP theBestSolution = populations[0].getIndividuals().get(0);
 
-            while (i < gen && i + 1 < gen) {
-                while (populations[i + 1].getIndividuals().size() != pop_size) {
-                    TSP p1 = selection.tournament(populations[i].getIndividuals(), tournament_size, adjacencyMatrix);
-                    TSP p2 = selection.tournament(populations[i].getIndividuals(), tournament_size, adjacencyMatrix);
-//                    TSP p1 = selection.roulette(populations[i]);
-//                    TSP p2 = selection.roulette(populations[i]);
-                    TSP newIndividual = new TSP();
-                    if (Math.random() < px) {
-//                            newIndividual = crossover.pmxCrossover(p1.getNodes(), p2.getNodes(), adjacencyMatrix);
-                        newIndividual.setNodes(crossover.orderedCrossover(p1.getNodes(), p2.getNodes()));
-                    } else {
-                        newIndividual.setNodes(new ArrayList<>(p1.getNodes()));
-                    }
-                    mutation.swap(newIndividual.getNodes(), pm);
-                    newIndividual.evaluateScore(adjacencyMatrix);
-                    populations[i + 1].getIndividuals().add(newIndividual);
-                    if (theBestSolution.getScore() > newIndividual.getScore()) {
-                        theBestSolution = newIndividual;
-                    }
+        while (i < gen && i + 1 < gen) {
+            while (populations[i + 1].getIndividuals().size() != pop_size) {
+                TSP p1 = selection.tournament(populations[i].getIndividuals(), tournament_size, adjacencyMatrix);
+                TSP p2 = selection.tournament(populations[i].getIndividuals(), tournament_size, adjacencyMatrix);
+//                TSP p1 = selection.roulette(populations[i]);
+//                TSP p2 = selection.roulette(populations[i]);
+                TSP newIndividual = new TSP();
+                if (Math.random() < px) {
+                    newIndividual = crossover.pmxCrossover(p1.getNodes(), p2.getNodes(), adjacencyMatrix);
+//                            newIndividual.setNodes(crossover.orderedCrossover(p1.getNodes(), p2.getNodes()));
+                } else {
+                    newIndividual.setNodes(new ArrayList<>(p1.getNodes()));
                 }
-                logger.printWriter.print(populations[i].getBestIndividual().score + "\t");
-                logger.printWriter.print(populations[i].getWorstIndividual().score + "\t");
-                logger.printWriter.print(populations[i].getAverage(adjacencyMatrix) + "\t \n");
-                i++;
+                mutation.swap(newIndividual.getNodes(), pm);
+                newIndividual.evaluateScore(adjacencyMatrix);
+                populations[i + 1].getIndividuals().add(newIndividual);
+                if (theBestSolution.getScore() > newIndividual.getScore()) {
+                    theBestSolution = newIndividual;
+                }
             }
+            logger.printWriter.print(populations[i].getBestIndividual().score + "\t");
+            logger.printWriter.print(populations[i].getWorstIndividual().score + "\t");
+            logger.printWriter.print(populations[i].getAverage(adjacencyMatrix) + "\t \n");
+            i++;
+        }
 //            logger.printWriter.println(fileEntry);
 
-
+//            }
 //        }
     }
-//    }
 
 }
