@@ -118,6 +118,7 @@ public class TSP implements Comparable<TSP> {
                 route[counter] = j + 1;
             }
         }
+        this.setNodes(visitedPaths);
     }
 
     public double randomSearch(int numberOfRepetitions){

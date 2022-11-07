@@ -53,6 +53,18 @@ public class Population {
         return sum / this.individuals.size();
     }
 
+    public double getStd(double[][] adjacencyMatrix) {
+        double sum = 0.0;
+        double average = getAverage(adjacencyMatrix);
+        for (TSP individual : this.individuals) {
+            if (individual.getScore() == 0 || individual.getScore() == null) {
+                individual.evaluateScore(adjacencyMatrix);
+            }
+            sum += Math.pow(individual.getScore() - average, 2);
+        }
+        return Math.pow(sum / this.individuals.size(), 0.5);
+    }
+
     double evaluateSumOfFitness() {
         double sum = 0.0;
         for (TSP individual : this.individuals) {
